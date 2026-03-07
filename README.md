@@ -6,7 +6,7 @@
 
 #### Takes a standard image file and transforms it into an Excel file where each cell is coloured to represent a pixel.
 
-#### It can also perform the reverse operationm taking a specially formatted Excel file and converting back into an image.
+#### It can also perform the reverse operation taking a specially formatted Excel file and converting back into an image.
 
 ### Useful for:
 - **Upscaling & enhancing low-resolution images**
