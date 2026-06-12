@@ -1,21 +1,32 @@
-# Pixel-Perfect: Image-to-Excel and Excel-to-Image Converter
+# Pixel-Perfect
 
-### basically, map each pixel into a cell
+Map every pixel of an image to a coloured Excel cell — and back.
 
-# A program to split an image down to its individual pixels no matter the resolution.
+## Usage
 
-#### Takes a standard image file and transforms it into an Excel file where each cell is coloured to represent a pixel.
+```
+py main.py to-excel <image> <xlsx> [--scale N]
+py main.py to-image <xlsx> <output> [--scale N]
+```
 
-#### It can also perform the reverse operation taking a specially formatted Excel file and converting back into an image.
+### Examples
 
-### Useful for:
-- **Upscaling & enhancing low-resolution images**
-- **Detailed Image Editing**: Manually edit images pixel-by-pixel directly within Excel by changing cell colors.
-- **Creative Projects**: Generate unique visual effects or data art
-- **Creating Pixel Art**: Convert any image into a pixelated grid, perfect for artists and designers.
+```bash
+# Convert at native resolution
+py main.py to-excel photo.png pixels.xlsx
 
-## Features
+# 2× upscale (e.g. 100×100 image → 200×200 grid)
+py main.py to-excel photo.png pixels.xlsx --scale 2
 
--   **Image to Excel:** Converts standard image formats (PNG, JPG, etc.) into an `.xlsx` file.
--   **Excel to Image:** Rebuilds an image from a color-formatted Excel sheet.
--   **Resolution Independent:** You can define a custom grid size to downscale images (or not).
+# Half resolution (downscale)
+py main.py to-excel photo.png pixels.xlsx --scale 0.5
+
+# Edit cells in Excel, then render at 4×
+py main.py to-image pixels.xlsx output.png --scale 4
+```
+
+## Notes
+
+- **Large grids** (>500k cells) will be slow in Excel.
+- **Excel limits**: 1,048,576 rows × 16,384 columns enforced.
+- Scale works on both commands: `to-excel` accepts any positive float, `to-image` accepts positive integers.
